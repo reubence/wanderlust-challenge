@@ -1,3 +1,5 @@
+<img width="1136" alt="image" src="https://github.com/user-attachments/assets/3c7abab6-95a6-42de-89db-31f4f6d36e30" />
+
 # Wanderlust Debug Challenge
 
 Welcome to the Wanderlust Debug Challenge! This is a take-home assignment designed to test your debugging and problem-solving skills in a real-world scenario.
