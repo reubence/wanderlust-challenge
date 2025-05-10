@@ -39,7 +39,9 @@ Unfortunately, there's a bug (or several) preventing the application from runnin
 
 1. Clone this repository
 2. Create a `.env` file based on `.env.example`
-3. Start the application with Docker Compose:
+3. Get a free API key from [OpenRouter](https://openrouter.ai/) for the voice transcription functionality
+4. Add your OpenRouter API key to the `.env` file
+5. Start the application with Docker Compose:
 
 ```bash
 docker compose up
