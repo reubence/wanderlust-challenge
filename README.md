@@ -41,9 +41,9 @@ Unfortunately, there's a bug (or several) preventing the application from runnin
 2. Create a `.env` file based on `.env.example`
 3. Start the application with Docker Compose:
 
-\`\`\`bash
+```bash
 docker compose up
-\`\`\`
+```
 
 4. The application should be running at http://localhost:3000 (if all issues are fixed)
 
@@ -57,9 +57,9 @@ docker compose up
 
 Run the tests with:
 
-\`\`\`bash
+```bash
 npm test
-\`\`\`
+```
 
 ## Deliverables
 
