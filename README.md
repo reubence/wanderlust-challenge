@@ -6,7 +6,7 @@ Welcome to the Wanderlust Debug Challenge! This is a take-home assignment design
 
 ## Overview
 
-This project is a Next.js 14 application with App Router, TypeScript, Prisma, PostgreSQL (with pgvector), and shadcn/ui components. The application is a travel destination search platform that allows users to search for destinations and transcribe voice to text.
+This project is a Next.js 15 application with App Router, TypeScript, Prisma, PostgreSQL (with pgvector), and shadcn/ui components. The application is a travel destination search platform that allows users to search for destinations and transcribe voice to text.
 
 Unfortunately, there's a bug (or several) preventing the application from running correctly. Your mission is to identify and fix these issues.
 
