@@ -111,4 +111,3 @@ Good luck! 🚀
 - Added a migration file for stability, this should not be left out
 - Added things to the Readme for smoother working
 - Added a setup test to test all these fixes
-
