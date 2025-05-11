@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { z } from "zod"
 
 const envSchema = z.object({
-  OPENROUTER_API_URL: z.string().url(),
+  GOOGLE_AI_API_URL: z.string().url(),
 })
 
 const transcribeSchema = z.object({
@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   try {
     // Validate environment variables
     const env = envSchema.parse({
-      OPENROUTER_API_URL: process.env.OPENROUTER_API_URL,
+      GOOGLE_AI_API_URL: process.env.GOOGLE_AI_API_URL,
     })
 
     const formData = await request.formData()
@@ -25,10 +25,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Audio file is required" }, { status: 400 })
     }
 
-    const response = await fetch(`${env.OPENROUTER_API_URL}/transcribe`, {
+    // This endpoint doesn't exist and needs to be fixed
+    const response = await fetch(`${env.GOOGLE_AI_API_URL}/transcribe`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        Authorization: `Bearer ${process.env.GOOGLE_AI_API_KEY}`,
         "Content-Type": "multipart/form-data",
       },
       body: JSON.stringify({
