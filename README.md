@@ -1,5 +1,3 @@
-<img width="1136" alt="image" src="https://github.com/user-attachments/assets/3c7abab6-95a6-42de-89db-31f4f6d36e30" />
-
 # Wanderlust Debug Challenge
 
 Welcome to the Wanderlust Debug Challenge! This is a take-home assignment designed to test your debugging and problem-solving skills in a real-world scenario.
@@ -34,20 +32,23 @@ Unfortunately, there's a bug (or several) preventing the application from runnin
 
 * Node.js 18+
 * Docker and Docker Compose
+* Google AI Studio API key (for voice transcription)
 
 ### Setup
 
 1. Clone this repository
 2. Create a `.env` file based on `.env.example`
-3. Get a free API key from [OpenRouter](https://openrouter.ai/) for the voice transcription functionality
-4. Add your OpenRouter API key to the `.env` file
+3. Get a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey) for the voice transcription functionality
+   - The transcription functionality uses Gemini 2.5 Flash or any other multi-modal model which can process audio files
+   - You'll need to update the API endpoint and request format in the code
+4. Add your API key to the `.env` file
 5. Start the application with Docker Compose:
 
 ```bash
 docker compose up
 ```
 
-4. The application should be running at http://localhost:3000 (if all issues are fixed)
+6. The application should be running at http://localhost:3000 (if all issues are fixed)
 
 ## API Endpoints
 
@@ -80,3 +81,7 @@ npm test
 **Bonus**: If you spot *other* latent issues (performance, security) and patch them with notes.
 
 Good luck! 🚀
+
+```
+
+Let's also update the .env.example file to reflect this change:
