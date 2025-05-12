@@ -3,6 +3,7 @@ import { z } from "zod"
 export const searchSchema = z.object({
   limit: z.number().optional(),
   offset: z.number().optional(),
+  query: z.string().default(""),
 })
 
 export const envSchema = z.object({
@@ -13,7 +14,7 @@ export const envSchema = z.object({
 
 export const destinationSchema = z.object({
   name: z.string(),
-  desination: z.string(),
+  destination: z.string(),
   description: z.string(),
   imageUrl: z.string().url().optional(),
   embedding: z.array(z.number()).optional(),

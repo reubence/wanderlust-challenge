@@ -1,58 +1,59 @@
-import { NextResponse } from "next/server"
-import { z } from "zod"
-
-const envSchema = z.object({
-  GOOGLE_AI_API_URL: z.string().url(),
-})
-
-const transcribeSchema = z.object({
-  audioData: z.string(),
-  language: z.string().optional(),
-})
+import { NextResponse } from "next/server";
+import { GoogleGenAI, createUserContent, createPartFromUri } from "@google/genai";
+import * as fs from 'fs/promises';
+import * as path from 'path';
+import * as os from 'os';
 
 export async function POST(request: Request) {
   try {
-    // Validate environment variables
-    const env = envSchema.parse({
-      GOOGLE_AI_API_URL: process.env.GOOGLE_AI_API_URL,
-    })
+    const apiKey = process.env.GOOGLE_AI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: "Missing Google API key" }, { status: 500 });
+    }
 
-    const formData = await request.formData()
-    const audioFile = formData.get("audio") as File
-    const language = (formData.get("language") as string) || "en"
+    const formData = await request.formData();
+    const audioFile = formData.get("audio") as File;
 
     if (!audioFile) {
-      return NextResponse.json({ error: "Audio file is required" }, { status: 400 })
+      return NextResponse.json({ error: "Audio file is required" }, { status: 400 });
     }
 
-    // This endpoint doesn't exist and needs to be fixed
-    const response = await fetch(`${env.GOOGLE_AI_API_URL}/transcribe`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.GOOGLE_AI_API_KEY}`,
-        "Content-Type": "multipart/form-data",
-      },
-      body: JSON.stringify({
-        file: audioFile,
-        language,
-      }),
-    })
+    const tempDir = os.tmpdir();
+    const tempFilePath = path.join(tempDir, `recording-${Date.now()}.mp3`);
 
-    if (!response.ok) {
-      throw new Error(`Transcription failed: ${response.statusText}`)
-    }
+    const arrayBuffer = await audioFile.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    await fs.writeFile(tempFilePath, buffer);
 
-    const data = await response.json()
-    return NextResponse.json({ transcript: data.text })
+    const ai = new GoogleGenAI({ apiKey });
+
+    const uploadedFile = await ai.files.upload({
+      file: tempFilePath,
+      config: { mimeType: "audio/mpeg" },
+    });
+
+    const result = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: createUserContent([
+        createPartFromUri((() => {
+          if (!uploadedFile.uri) {
+            throw new Error("Uploaded file URI is undefined");
+          }
+          return uploadedFile.uri;
+        })(), uploadedFile.mimeType || "audio/mpeg"),
+        `Transcribe this audio to text. Language is always English. Only include the name of the City, State, or Countries mentioned in the audio`,
+      ]),
+    });
+
+    await fs.unlink(tempFilePath);
+
+    const transcript = result.text || "";
+    return NextResponse.json({ transcript });
   } catch (error) {
-    console.error("Transcription API error:", error)
+    console.error("Transcription API error:", error);
     return NextResponse.json(
-      {
-        status: "error",
-        message: "Transcription failed",
-        error: error instanceof Error ? error.message : String(error),
-      },
-      { status: 500 },
-    )
+      { message: "Transcription failed", error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
   }
 }
