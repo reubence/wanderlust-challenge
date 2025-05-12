@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
     const result = searchSchema.parse(body)
 
-    const destinations = await db.destinations.findMany({
+    const destinations = await db.destination.findMany({
       where: {
         OR: [
           { name: { contains: result.query, mode: "insensitive" } },

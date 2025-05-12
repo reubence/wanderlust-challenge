@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.destinations.deleteMany({})
+  await prisma.destination.deleteMany({});
 
   const destinations = [
     {
@@ -19,16 +19,22 @@ async function main() {
       imageUrl: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26",
     },
     {
-      name: "New York",
+      name: "Newyork",
       location: "USA",
       description: "The Big Apple, featuring iconic landmarks like Times Square and Central Park.",
       imageUrl: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9",
     },
-  ]
+    {
+      name: "Delhi",
+      location: "India",
+      description: "The capital city, known for its rich history and culture.",
+      imageUrl: "https://images.unsplash.com/photo-1648455288365-ee27a61c95bd",
+    },
+  ];
 
-  Promise.all(
+  await Promise.all(
     destinations.map((destination) =>
-      prisma.destinations.create({
+      prisma.destination.create({
         data: destination,
       }),
     ),
