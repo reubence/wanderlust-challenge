@@ -1,3 +1,2 @@
-npx prisma migrate deploy
-npx prisma db seed
+npx prisma migrate reset --force
 npm run start

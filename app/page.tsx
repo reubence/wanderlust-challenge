@@ -86,8 +86,12 @@ export default function Home() {
           const data = await response.json();
 
           if (data.transcript) {
-            const cleanedString = data.transcript.trim().replace(/\n/g, '');
-            setQuery(cleanedString);
+            const final = data.transcript
+              .trim()
+              .replace(/\n/g, "")
+              .replace(/^\s+|\s+$/g, "")
+              .replace(/\s+/g, " ");
+            setQuery(final);
           } else {
             console.error("No transcript received");
             setQuery("");
@@ -177,7 +181,8 @@ export default function Home() {
                     />
                   )}
                   <div>
-                    <strong>{result.name}</strong>: {result.location} - {result.description}
+                    <strong>{result.name}</strong>: {result.location} -{" "}
+                    {result.description}
                   </div>
                 </div>
               ))
