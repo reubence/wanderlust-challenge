@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
 async function main() {
   await prisma.destination.deleteMany();
-=======
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient()
-
-async function main() {
-  await prisma.destinations.deleteMany({})
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
 
   const destinations = [
     {
@@ -33,7 +24,6 @@ async function main() {
       description: "The Big Apple, featuring iconic landmarks like Times Square and Central Park.",
       imageUrl: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9",
     },
-<<<<<<< HEAD
   ];
 
   await Promise.all(
@@ -45,35 +35,13 @@ async function main() {
   );
 
   console.log("✅ Seed data inserted successfully");
-=======
-  ]
-
-  Promise.all(
-    destinations.map((destination) =>
-      prisma.destinations.create({
-        data: destination,
-      }),
-    ),
-  )
-
-  console.log("Seed data inserted successfully")
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
 }
 
 main()
   .catch((e) => {
-<<<<<<< HEAD
     console.error(e);
     process.exit(1);
   })
   .finally(async () => {
     await prisma.$disconnect();
   });
-=======
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851

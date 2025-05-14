@@ -9,15 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@google-cloud/speech": "^7.1.0",
     "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "^6.7.0",
-=======
-    "@hookform/resolvers": "^3.9.1",
-    "@prisma/client": "latest",
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
     "@radix-ui/react-accordion": "1.2.2",
     "@radix-ui/react-alert-dialog": "1.1.4",
     "@radix-ui/react-aspect-ratio": "1.1.1",
@@ -47,26 +42,18 @@
     "@radix-ui/react-tooltip": "1.1.6",
     "@types/express": "latest",
     "autoprefixer": "^10.4.20",
-<<<<<<< HEAD
     "axios": "^1.9.0",
-=======
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
     "child_process": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
-<<<<<<< HEAD
     "date-fns": "3.0.0",
-=======
-    "date-fns": "4.1.0",
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "15.2.4",
     "next-themes": "^0.4.4",
     "node-mocks-http": "latest",
-<<<<<<< HEAD
     "prisma": "^6.7.0",
     "react": "^18.2.0",
     "react-day-picker": "8.10.1",
@@ -75,15 +62,6 @@
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
     "seed": "ts-node prisma/seed.ts",
-=======
-    "prisma": "latest",
-    "react": "^19",
-    "react-day-picker": "8.10.1",
-    "react-dom": "^19",
-    "react-hook-form": "^7.54.1",
-    "react-resizable-panels": "^2.1.7",
-    "recharts": "2.15.0",
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
@@ -97,13 +75,7 @@
     "@types/react-dom": "^19",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
-<<<<<<< HEAD
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
-=======
-    "typescript": "^5"
-  }
-}
->>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
