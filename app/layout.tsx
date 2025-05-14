@@ -9,7 +9,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Wanderlust - Travel Search",
   description: "Find your next adventure with our intelligent search",
+<<<<<<< HEAD
   generator: 'v0.dev'
+=======
+    generator: 'v0.dev'
+>>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
 }
 
 export default function RootLayout({
@@ -18,6 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+<<<<<<< HEAD
     // Added `suppressHydrationWarning` to prevent hydration mismatch error 
     // caused by client-side changes to the <html> tag (e.g., dark/light theme class)
     <html lang="en" suppressHydrationWarning>
@@ -29,9 +34,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+=======
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+>>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
           {children}
         </ThemeProvider>
       </body>
     </html>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a3c8059ba15d313e565573fe079cef40d7902851

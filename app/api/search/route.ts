@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { z } from "zod";
@@ -38,13 +39,43 @@ export async function POST(request: Request) {
     return NextResponse.json({ results: destinations });
   } catch (error) {
     console.error("Search API error:", error);
+=======
+import { NextResponse } from "next/server"
+import { db } from "@/lib/db"
+import { searchSchema } from "@/lib/validations"
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json()
+
+    const result = searchSchema.parse(body)
+
+    const destinations = await db.destinations.findMany({
+      where: {
+        OR: [
+          { name: { contains: result.query, mode: "insensitive" } },
+          { description: { contains: result.query, mode: "insensitive" } },
+        ],
+      },
+      take: result.limit || 10,
+    })
+
+    return NextResponse.json({ results: destinations })
+  } catch (error) {
+    console.error("Search API error:", error)
+>>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
     return NextResponse.json(
       {
         status: "error",
         message: "Search failed",
         error: error instanceof Error ? error.message : String(error),
       },
+<<<<<<< HEAD
       { status: 400 }
     );
+=======
+      { status: 400 },
+    )
+>>>>>>> a3c8059ba15d313e565573fe079cef40d7902851
   }
 }
