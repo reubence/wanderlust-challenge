@@ -87,7 +87,7 @@ You can get the detailed video explaination here : https://drive.google.com/file
 ---
 
 
-Thanks! Here's your updated **Bugs & Fixes Summary – Wanderlust Search** with the additional bugs and fixes incorporated into the **🐞 Fixed Bugs** section:
+Thanks! Here's your updated **Bugs & Fixes Summary – Wanderlust Search** with the additional bugs and fixes incorporated into the ** Fixed Bugs** section:
 
 ---
 
