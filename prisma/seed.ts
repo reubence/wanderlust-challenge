@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client"
+const { PrismaClient } = require("@prisma/client");
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.destinations.deleteMany({})
+  await prisma.destination.deleteMany();
 
   const destinations = [
     {
@@ -24,24 +24,24 @@ async function main() {
       description: "The Big Apple, featuring iconic landmarks like Times Square and Central Park.",
       imageUrl: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9",
     },
-  ]
+  ];
 
-  Promise.all(
+  await Promise.all(
     destinations.map((destination) =>
-      prisma.destinations.create({
+      prisma.destination.create({
         data: destination,
-      }),
-    ),
-  )
+      })
+    )
+  );
 
-  console.log("Seed data inserted successfully")
+  console.log("✅ Seed data inserted successfully");
 }
 
 main()
   .catch((e) => {
-    console.error(e)
-    process.exit(1)
+    console.error(e);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });
