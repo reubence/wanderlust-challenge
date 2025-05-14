@@ -9,19 +9,22 @@ You can get the detailed video explaination here : https://drive.google.com/file
 
 ---
 
-## 🐞 Fixed Bugs
+##  Fixed Bugs
 
-| Bug                                               | Description                                                                                | Fix                                                                                        |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| **Redundant `setQuery` in `onSubmit`**            | The query state was being manually set even though it was already controlled by the input. | Removed unnecessary `setQuery(e.target.query.value)` from the submit handler.              |
-| **"No results found" displayed prematurely**      | Message appeared before the user even performed a search.                                  | Used a `hasSearched` flag and validated `results.length === 0` before showing the message. |
-| **No error feedback on failed search**            | Users got no feedback if the search API failed.                                            | Introduced `setSearchError` to capture and display errors in the UI.                       |
-| **Voice search didn't handle mic access failure** | No user alert if mic permission was denied or recording failed.                            | Wrapped recording logic in `try-catch` and showed a user-friendly alert.                   |
-| **Audio recording duration undefined**            | Recording continued indefinitely.                                                          | Capped recording to 3 seconds using `setTimeout`.                                          |
-| **Transcription response lacked error handling**  | No error displayed if the transcript was empty.                                            | Added fallback alert if `data.transcript` is missing.                                      |
-| **React hook used in a server component**         | `useState` used in a file treated as a server component.                                   | Added `"use client";` at the top of `page.tsx`.                                            |
-| **Environment variable missing**                  | `GOOGLE_API_KEY` not set, causing Zod validation failure.                                  | Added `.env` validation and error handling.                                                |
-| **Incorrect Google GenAI usage**                  | Used invalid methods from `@google/genai`.                                                 | Switched to using `@google/generative-ai` and base64 audio conversion.                     |
+| Bug                                                       | Description                                                                                | Fix                                                                                                    |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Redundant `setQuery` in `onSubmit`**                    | The query state was being manually set even though it was already controlled by the input. | Removed unnecessary `setQuery(e.target.query.value)` from the submit handler.                          |
+| **"No results found" displayed prematurely**              | Message appeared before the user even performed a search.                                  | Used a `hasSearched` flag and validated `results.length === 0` before showing the message.             |
+| **No error feedback on failed search**                    | Users got no feedback if the search API failed.                                            | Introduced `setSearchError` to capture and display errors in the UI.                                   |
+| **Voice search didn't handle mic access failure**         | No user alert if mic permission was denied or recording failed.                            | Wrapped recording logic in `try-catch` and showed a user-friendly alert.                               |
+| **Audio recording duration undefined**                    | Recording continued indefinitely.                                                          | Capped recording to 3 seconds using `setTimeout`.                                                      |
+| **Transcription response lacked error handling**          | No error displayed if the transcript was empty.                                            | Added fallback alert if `data.transcript` is missing.                                                  |
+| **React hook used in a server component**                 | `useState` used in a file treated as a server component.                                   | Added `"use client";` at the top of `page.tsx`.                                                        |
+| **Environment variable missing**                          | `GOOGLE_API_KEY` not set, causing Zod validation failure.                                  | Added `.env` validation and error handling.                                                            |
+| **Incorrect Google GenAI usage**                          | Used invalid methods from `@google/genai`.                                                 | Switched to using `@google/generative-ai` and base64 audio conversion.                                 |
+| **`next` not recognized as internal or external command** | Command line failed due to Next.js conflict with libraries.                                | Downgraded `react` and `react-dom` to resolve version conflict with `date-fns` and `react-day-picker`. |
+| **Typo in `db.queryRaw`**                                 | Misspelled method as `db$queryRaw`.                                                        | Corrected to `db.$queryRaw`.                                                                           |
+| **TypeScript error in `searchSchema`**                    | `query` field was not included in the Zod schema.                                          | Added the `query` field to the `searchSchema` for proper validation.                                   |
 
 ---
 
@@ -82,3 +85,10 @@ You can get the detailed video explaination here : https://drive.google.com/file
 * Used `zod` schemas throughout for consistent validation on both client and server.
 
 ---
+
+
+Thanks! Here's your updated **Bugs & Fixes Summary – Wanderlust Search** with the additional bugs and fixes incorporated into the **🐞 Fixed Bugs** section:
+
+---
+
+
